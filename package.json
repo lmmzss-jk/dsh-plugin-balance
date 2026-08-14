@@ -1,0 +1,63 @@
+{
+  "name": "dsh-plugin-balance",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness web plugin: header balance button (left of the native Session log), dropdown with account balance, live per-session model + token usage and official-rate cost estimates; auto-hides on the settings page",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "balance",
+    "token-usage"
+  ],
+  "license": "MIT",
+  "author": "lmmzss-jk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmmzss-jk/dsh-plugin-balance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lmmzss-jk/dsh-plugin-balance/issues"
+  },
+  "homepage": "https://github.com/lmmzss-jk/dsh-plugin-balance#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  }
+}

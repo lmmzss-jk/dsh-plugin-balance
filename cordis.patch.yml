@@ -1,0 +1,14 @@
+# dsh-plugin-balance bundle patch: one row inserting the balance plugin.
+#
+# The row is dual-face: the loader mounts lib/index.js as the host half
+# (registers the /api/dsh-balance route on the web server), while the
+# client-modules scanner sees the package's dsh.client declaration and serves
+# lib/client.js to the browser (the top-right balance widget).
+#
+# Row order carries no load semantics (activation is service-availability
+# driven); inject: [webServer] waits for the web server service to exist.
+
+- insert:
+    - id: dsh-balance
+      name: 'dsh-plugin-balance'
+      inject: [webServer]
