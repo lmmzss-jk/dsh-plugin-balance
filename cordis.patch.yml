@@ -10,5 +10,5 @@
 
 - insert:
     - id: dsh-balance
-      name: 'dsh-plugin-balance'
+      name: '@lmmzss/dsh-plugin-balance'
       inject: [webServer]

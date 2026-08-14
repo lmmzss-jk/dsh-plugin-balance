@@ -1,5 +1,5 @@
 {
-  "name": "dsh-plugin-balance",
+  "name": "@lmmzss/dsh-plugin-balance",
   "version": "0.1.0",
   "description": "DeepSeek Harness web plugin: header balance button (left of the native Session log), dropdown with account balance, live per-session model + token usage and official-rate cost estimates; auto-hides on the settings page",
   "type": "module",

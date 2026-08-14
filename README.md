@@ -25,7 +25,7 @@ DeepSeek Harness Web 插件：会话头部余额按钮（位于原生 **Session 
 ## 安装
 
 ```bash
-dsh plugin --profile web add dsh-plugin-balance
+dsh plugin --profile web add @lmmzss/dsh-plugin-balance
 # 重启 dsh web 使插件生效
 ```
 
