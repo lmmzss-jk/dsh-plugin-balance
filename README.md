@@ -87,7 +87,9 @@ git push && git push --tags
 
 ## 截图
 
-> 待补充：头部按钮、下拉面板（会话用量 + 账户余额）截图。
+会话头部余额按钮与下拉面板（账户余额 + 实时 token 明细 + 缓存命中率 + 官方价目表费用估算）：
+
+![余额与实时会话用量面板](docs/screenshots/balance-plugin.jpeg)
 
 ## License
 
