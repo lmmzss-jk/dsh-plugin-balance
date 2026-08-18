@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    name: Syntax + pack smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Syntax check both halves
+        run: |
+          node --check lib/index.js
+          node --check lib/client.js
+
+      - name: Unit tests
+        run: node --test test/
+
+      - name: Pack smoke (tarball must contain exactly the shipped files)
+        run: |
+          npm pack --dry-run
+          node scripts/prepublish-check.mjs
+
+      - name: Verify installability of the packed tarball
+        run: |
+          npm pack --silent > /dev/null
+          TARBALL=$(ls *.tgz | head -1)
+          mkdir -p /tmp/install-test && cd /tmp/install-test
+          npm init -y > /dev/null
+          npm install "/tmp/../github/workspace/$TARBALL" --ignore-scripts --no-audit --no-fund
+          node -e "import('/tmp/install-test/node_modules/@lmmzss/dsh-plugin-balance/lib/index.js').then(m => { if (!m.apply) process.exit(1); console.log('host half loads OK') })"
