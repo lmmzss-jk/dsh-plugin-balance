@@ -66,6 +66,29 @@ dsh plugin --profile web add /path/to/dsh-plugin-balance
 # 修改 lib/client.js 后刷新页面即可生效；修改宿主端/配置需重启 dsh
 ```
 
+```bash
+npm test                # 价格计算/格式化回归测试（node:test）
+node scripts/prepublish-check.mjs   # 发布前冒烟检查
+```
+
+## 发布流程（维护者）
+
+```bash
+# 1. 改代码并自测
+npm test
+# 2. 更新 package.json 版本号 + CHANGELOG.md
+# 3. 发布 npm（需 npm 账号 2FA passkey 认证，走官方源）
+npm publish --access public --registry=https://registry.npmjs.org/
+# 4. 同步 GitHub（commit + tag + push）
+git add -A && git commit -m "chore: release vX.Y.Z"
+git tag -a vX.Y.Z -m "dsh-plugin-balance vX.Y.Z"
+git push && git push --tags
+```
+
+## 截图
+
+> 待补充：头部按钮、下拉面板（会话用量 + 账户余额）截图。
+
 ## License
 
 [MIT](./LICENSE)
